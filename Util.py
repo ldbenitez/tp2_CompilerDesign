@@ -16,3 +16,6 @@ class Production:
         self.body = []
         self.first_set = []
         self.follow_set= []
+
+    def __str__(self):
+        return self.name

@@ -1,1 +1,3 @@
-test -> aBC | @
+test -> a,B,C | @
+A -> a,b,c
+C -> Z,B,a
