@@ -5,6 +5,16 @@ from Util import Grammar,Production
 def main():
     grammar = Grammar()
     production = None
+    input_list = []
+
+    # print "Write the Grammar:"
+    # while True:
+    #     input_str = raw_input(">")
+    #     if input_str == ".":
+    #         break
+    #     else:
+    #         input_list.append(input_str)
+
     with open("grammar_input_example.txt",'r') as grammar_input:
         for line in grammar_input:
             tmp_split = line.rsplit("->",1)
