@@ -1,3 +1,5 @@
-test -> a,B,C | @
-A -> a,b,c
-C -> Z,B,a
+e -> t,ex
+ex -> t,ex | @
+t -> f,tx
+tx -> /,f,tx | @
+f -> literal | (,e,)
