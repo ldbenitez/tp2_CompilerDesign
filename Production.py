@@ -12,6 +12,12 @@ class Production:
     def __str__(self):
         return self.name
 
+    def get_object_as_string(self):
+        string = self.name+" -> "
+        string += "".join(self.body)
+        return string
+
+
     def first_union(self, f):
         for token in f:
             if token not in self.first_set:

@@ -74,20 +74,6 @@ class Grammar:
         for p in self.productions:
             p.define_follow_set(self)
 
-    def get_first_sets(self):
-        result = []
-        for p in self.productions:
-            line = p.name + ':' + p.first_set.__str__()
-            result.append(line)
-        return result
-
-    def get_follow_sets(self):
-        result = []
-        for p in self.productions:
-            line = p.name + ':' + p.follow_set.__str__()
-            result.append(line)
-        return result
-
     def get_next_symbols(self, prod_name):
 
         result = []
@@ -103,7 +89,6 @@ class Grammar:
         return result
 
     def add_to_follow_sets(self, name, token_list):
-        print token_list
         for p in self.get_production(name):
             for token in token_list:
                 if (token not in p.follow_set) and (token != '@'):
