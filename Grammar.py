@@ -16,6 +16,7 @@ class Grammar:
         with open(filepath, 'r') as grammar_input:
 
             for line in grammar_input:
+                print line
                 tmp_split = line.rsplit("->", 1)
                 left_part = tmp_split[0].replace("\n", "").strip()
 
@@ -26,7 +27,7 @@ class Grammar:
                 right_part = tmp_split[1].rsplit("|")
 
                 self.non_terminals.append(left_part.strip())
-            
+
                 for item in right_part:
 
                     production = Production()
