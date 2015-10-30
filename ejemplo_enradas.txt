@@ -1,0 +1,8 @@
+para la gramatica g2:
+    cadenas validas:
+        id,+,id,*,(,id,+,id,),$
+
+    cadenas invalidas:
+        id,+,+,id,*,(,id,+,+,id,),$
+        id,+,id,*,(,),id,+,id,),$
+        id,+,id,*,(,id,+,),id,),$

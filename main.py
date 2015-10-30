@@ -88,19 +88,19 @@ def ll_parsing(parse_table, grammar, input_string):
             input_token = str(input_symbols[0])
             i += 1
         elif x in grammar.terminals:
-            print "Error in " + input_string
+            print "Error in " + input_string + "\t\t fatal"
             errors.append(i)
             error = True
             break
         else:
             parse_table_entry = look_parse_table(parse_table, x, input_token,grammar)
             if parse_table_entry is ERROR:
-                print "Error in " + input_token
+                print "Error in " + input_token + "\t\t fatal"
                 errors.append(i)
                 error = True
                 break
             elif parse_table_entry is SYNC:
-                print "****Error in " + input_token
+                print "Error in " + input_token + "\t\t recuperable"
                 errors.append(i)
                 error = True
                 stack.pop()
