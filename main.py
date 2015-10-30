@@ -75,6 +75,9 @@ def ll_parsing(parse_table, grammar, input_string):
     stack.push(grammar.non_terminals[0])
     input_token = input_symbols[0]
 
+    i = 0
+    errors = []
+
     x = stack.peek()
     error = False
     while x is not '$':
@@ -83,16 +86,24 @@ def ll_parsing(parse_table, grammar, input_string):
             stack.pop()
             input_symbols.pop(0)
             input_token = str(input_symbols[0])
+            i += 1
         elif x in grammar.terminals:
             print "Error in " + input_string
+            errors.append(i)
             error = True
             break
         else:
             parse_table_entry = look_parse_table(parse_table, x, input_token,grammar)
             if parse_table_entry is ERROR:
                 print "Error in " + input_token
+                errors.append(i)
                 error = True
                 break
+            elif parse_table_entry is SYNC:
+                print "****Error in " + input_token
+                errors.append(i)
+                error = True
+                stack.pop()
             else:
                 production = grammar.productions[parse_table_entry]
                 print production.get_object_as_string()
@@ -102,8 +113,12 @@ def ll_parsing(parse_table, grammar, input_string):
                         stack.push(item)
         x = stack.peek()
 
+
     if not error:
         print "\nSuccess"
+    else:
+        print "\nError"
+
 
 
 def look_parse_table(parse_table, x, input_token, grammar):
